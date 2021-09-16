@@ -1,18 +1,171 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Green Motors - Contact</title>
+<html lang=" en-US">
+<!--  contact page 
+		05/12/2021 
+	 HENOK ASMARE -->
+    <head>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<style>
+	#container {font-family:verdana,Geneva,Sans-serif;
+				 font-size:12px;
+				 background-color:rgb#fff;
+				 width:100%;
+				 height:100%
+				 padding:0px;
+				 }
+		
+	#content{padding:50px 20px 50px 30px;
+	         width:90%;
+	         height:400px;
+             font-size:13px;			 
+	         font-family:"segeo UI",Arial,Sans-serif;
+			 align-content:center;
+			 padding:50px 500px;}
+	
+	
+	.fa {
+     padding: 10px;
+     font-size: 30px;
+     width: 50px;
+     text-align: center;
+    text-decoration: none;
+     margin: 5px 2px;
+     }
+   .fa-facebook {
+     background: #3B5998;
+     color: white;
+     }
+	 
+	.fa-instagram {
+       background: #d6249f;
+       color: white;
+     }
+
+    .fa-twitter {
+       background: #55ACEE;
+       color: white;}
+	   
+	h1{font-size:18px;color:#09f}
+	
+	#colOne{width:100%;
+	       align-content:center;}
+		    		 
+	#para1{
+	      background-color:#F1F1F1;
+		  padding:20px;}
+	
+	
+	form { 
+		font-size:16px;			 
+	    font-family:"segeo UI",Arial,Sans-serif;
+		background-color:rgb#fff;
+		width:100%;
+		padding :40px 50px; 50px;}
+		
+	input[type="text"],input[type="email"]{
+	  padding:5px;
+      margin:5px;}
+	 
+		
+	form input[type="submit"] 
+	{background:rgb(237,28,36); 
+	 font-size:16px;			 
+	    font-family:"segeo UI",Arial,Sans-serif;
+		color:#fff;
+		padding : 10px 20px;
+		margin : 14px 15px 20px 100px;
+		}	
+	</style>
+	<title>contact</title>
 </head>
-<body>
-    <!--Navbar will go here-->
+    
+ <body>
+   <div id = "container">
+	<nav>
 
-    <h1>Contact</h1>
+		 
+		 
+	 </nav> <!-- End nav tag -->
+	 
+	<div id="content">
+	  <aside id="colOne">
+	      <h2>Contact GreenMotors</h2>
+		  <p> We're here to help and answer any quastion you maight have<br>we look forward to hearing from you</p>
+		  <ul>
+		    <li>
+			<div id "icone">
+			 <i class="material-icons" style="color:green;font-size:30px;">phone</i> Phone Number:
+			 
+		     </div>
+			  </li><br>
+			   <div id "icone2">
+			   <li>
+			   <i class="material-icons" style="color:green;font-size:30px;">room</i> Ottumwa,IA 52501
+			   
+		      </div>
+			  </li><br>
+			   <div id "icone3">
+			   <li>
+			   <i class="material-icons" style="color:green;font-size:30px;">mail</i> GreenMotors@gmail.com
+		       </div>
+			   </li>
+			</ul>
+			<a href="#" class="fa fa-facebook"></a>
+            <a href="#" class="fa fa-twitter"></a> 
+			<a href="#" class="fa fa-instagram"></a> 
+	      
+	     <script>
+            function validateForm() {
+              var firstname = document.forms["myForm"]["fname"].value;
+			  var lastName= document.forms  ["myForm"]["lname"].value;
+			  var email = document.forms    ["myForm"]["email"].value;
+			  
+              if (firstname == "") {
+              alert("FirstName must be filled out");
+              return false;
+             }
+			 
+			 if (lastName== "") {
+              alert("LastName must be filled out");
+              return false;
+             }
+			 
+			 if (email == "") {
+              alert("Email must be filled out");
+              return false;
+             }
 
-    <ul>
-        <li>fhesufheahiua</li>
-    </ul>
-</body>
+			 function myFunction(){
+			 var choice = document.getElementById("mySelect").options[0].text;
+              document.getElementById("demo").innerHTML= choice;
+			 for(var option of document.getElementById("mySelect").options){
+                if(option.selected){
+                     text.push(" " + option.value);	 
+	            }
+             }
+           }
+		  } 
+       </script>
+
+     <form name="myForm" action="/action_page.php" onsubmit="return validateForm()" method="post">
+         FirstName: <input type="text" name="fname"><br>
+		 LastName:  <input type="text" name="lname"><br>
+		 email:     <input type="text" name="email"><br>
+		 
+		
+        <input type="submit" value="Join">
+     </form>
+	    		 
+		</aside><!-- End aside tag -->
+	 </div><!-- End containt tag -->	
+	   
+	<footer> 
+	    <ul>
+	     
+		    
+		</ul>
+	</footer><!-- End Footer tag -->
+	</div> <!-- End container tag -->
+ </body><!-- End body tag -->
 </html>
