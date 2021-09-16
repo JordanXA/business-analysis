@@ -1,0 +1,18 @@
+.header-line::before {
+    content: "";
+    display: block;
+    border-bottom: 5px solid #59ce55;
+    width: 100%;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    border-radius: 12px;
+}
+
+.cool-circle {
+    width: 50%;
+    aspect-ratio: 1;
+    background-color: #59ce55;
+    background-image: linear-gradient(to right bottom, #59ce55, #85db56, #ace75a, #d1f361, #f5ff6b);
+    clip-path: circle(50%);
+    margin: 1rem;
+}
