@@ -1,0 +1,76 @@
+#container {
+    font-family: verdana, Geneva, Sans-serif;
+    font-size: 12px;
+    background-color: rgb#fff;
+    width: 100%;
+    height: 100%;
+    padding: 0px;
+}
+
+#content {
+    padding: 10px 20px 50px 30px;
+    width: 90%;
+    height: 400px;
+    font-size: 13px;
+    font-family: "segeo UI", Arial, Sans-serif;
+    align-content: center;
+}
+
+
+.fa {
+    padding: 10px;
+    font-size: 24px !important;
+    width: 50px;
+    text-align: center;
+    text-decoration: none;
+    margin: 5px 2px;
+}
+
+.fa-facebook {
+    background: #3B5998;
+    color: white;
+}
+
+.fa-instagram {
+    background: #d6249f;
+    color: white;
+}
+
+.fa-twitter {
+    background: #55ACEE;
+    color: white;
+}
+
+h1 {
+    font-size: 18px;
+    color: #09f
+}
+
+form {
+    font-size: 16px;
+    font-family: "segeo UI", Arial, Sans-serif;
+    background-color: rgb#fff;
+    width: 100%;
+}
+
+input[type="text"],
+input[type="email"] {
+    padding: 5px;
+    margin: 5px;
+}
+
+
+form input[type="submit"] {
+    padding: 10px 20px;
+    margin: 14px 15px 20px 100px;
+}
+
+form::before {
+    content: "";
+    display: block;
+    border-bottom: 5px solid #59ce55;
+    width: 20%;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    border-radius: 12px;
+}
