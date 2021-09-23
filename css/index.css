@@ -16,3 +16,8 @@
     clip-path: circle(50%);
     margin: 1rem;
 }
+
+.motorcycle-svg {
+    width: 75%;
+    margin: 12.5% 12.5%;
+}
