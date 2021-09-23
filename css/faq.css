@@ -8,11 +8,17 @@
     border-radius: 12px;
 }
 
+.question-line {
+    position: relative;
+    display: inline-block;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
 .question-line::after {
     content: "";
     display: block;
     border-bottom: 5px solid #59ce55;
-    width: 60%;
     margin-top: 1rem;
     margin-bottom: 1rem;
     border-radius: 12px;
@@ -20,14 +26,8 @@
     margin-right: auto;
 }
 
-.question-line-long::after {
-    content: "";
-    display: block;
-    border-bottom: 5px solid #59ce55;
-    width: 90%;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    border-radius: 12px;
-    margin-left: auto;
-    margin-right: auto;
+.img-fit {
+    max-width: 100%;
+    height: auto;
+    max-height: fit-content;
 }
