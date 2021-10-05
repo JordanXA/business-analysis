@@ -1,10 +1,15 @@
 
 # A very simple Flask Hello World app for you to get started with...
-
 from flask import Flask, render_template
+from flask_sqlalchemy import SQLAlchemy
+from secrets import dbusername, dbpassword, dburl
 
+# don't edit this, if you need to use a local DB change the username, password, and url inside secrets.py 
+databaseURL = f'mysql://{dbusername}:{dbpassword}@{dburl}/greenmotors'
 
 app = Flask(__name__)
+app.config ['SQLALCHEMY_DATABASE_URI'] = databaseURL
+db = SQLAlchemy(app)
 
 @app.route('/')
 def index():
@@ -28,4 +33,5 @@ def faq():
 
 
 if __name__ == '__main__':
+    db.create_all()
     app.run()
