@@ -31,7 +31,13 @@ def contact():
 def faq():
     return render_template('faq.html')
 
+@app.route('/login')
+def login():
+    return render_template('login.html')
+
 
 if __name__ == '__main__':
+    # stuff to run when developing
     db.create_all()
+    app.config['TEMPLATES_AUTO_RELOAD'] = True
     app.run()
