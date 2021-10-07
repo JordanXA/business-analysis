@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+{% block title %}Green Motors{% endblock %}
+{% block content %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link href="static/css/contact.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<div id="container-fluid">
+	<div id="content">
+		<div id="col-6">
+			<h2>Contact GreenMotors</h2>
+			<p> We're here to help and answer any questions you maight have.<br>We look forward to hearing from you!
+			</p>
+			<ul class="list-group list-group-flush">
+				<li class="list-group-item d-flex align-items-center">
+					<i class="material-icons" style="color:green;font-size:30px;">phone</i>
+					<span class="ms-2">Phone Number:</span>
+				</li>
+				<li class="list-group-item d-flex align-items-center">
+					<i class="material-icons" style="color:green;font-size:30px;">room</i>
+					<span class="ms-2">Ottumwa, IA 52501</span>
+				</li>
+				<li class="list-group-item d-flex align-items-center">
+					<i class="material-icons" style="color:green;font-size:30px;">mail</i>
+					<span class="ms-2">GreenMotors@gmail.com</span>
+				</li>
+			</ul>
+			<a href="#" class="btn fa fa-facebook"></a>
+			<a href="#" class="btn fa fa-twitter"></a>
+			<a href="#" class="btn fa fa-instagram"></a>
+			<script>
+				function validateForm() {
+					var firstname = document.forms["myForm"]["fname"].value;
+					var lastName = document.forms["myForm"]["lname"].value;
+					var email = document.forms["myForm"]["email"].value;
+
+					if (firstname == "") {
+						alert("FirstName must be filled out");
+						return false;
+					}
+
+					if (lastName == "") {
+						alert("LastName must be filled out");
+						return false;
+					}
+
+					if (email == "") {
+						alert("Email must be filled out");
+						return false;
+					}
+
+					function myFunction() {
+						var choice = document.getElementById("mySelect").options[0].text;
+						document.getElementById("demo").innerHTML = choice;
+						for (var option of document.getElementById("mySelect").options) {
+							if (option.selected) {
+								text.push(" " + option.value);
+							}
+						}
+					}
+				}
+			</script>
+
+			<form name="myForm" action="/action_page.php" onsubmit="return validateForm()" method="post">
+				<label for="fname">First Name:</label>
+				<input type="text" name="fname"><br>
+
+				<label for="lname">Last Name:</label>
+				<input type="text" name="lname"><br>
+
+				<label for="email">Email: </label>
+				<input type="text" name="email"><br>
+
+
+				<input type="submit" class="btn btn-success" value="Join">
+			</form>
+
+		</div><!-- End aside tag -->
+	</div><!-- End containt tag -->
+
+	<footer>
+		<ul>
+
+
+		</ul>
+	</footer><!-- End Footer tag -->
+</div>
+{% endblock %}
