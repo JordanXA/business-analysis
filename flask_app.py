@@ -17,7 +17,11 @@ def index():
 
 @app.route('/buy')
 def buy():
-    return render_template('buy.html')
+    # maybe rename, this is really more like models. It displays the motorcycle models
+    # we want to add code here that accesses the list of models from the database
+    # we can pass the list of models into render_template() and it will load them
+    motors = LOADFROMDB()
+    return render_template('buy.html', motors)
 
 @app.route('/about')
 def about():
@@ -35,6 +39,13 @@ def faq():
 def login():
     return render_template('login.html')
 
+# GET endpoint for a model making page
+# this page will also load the model information, and display a form that you can use to edit models
+# creates a POST request on submit
+# then the endpoint can also handle a POST request, and enter the updated stuff into the database
+# alternatively, we could do this using proper REST/CRUD endpoints (fancy business words)
+# where we make just endpoints like GET /api/motors, POST /api/motors to create, PUT /api/motors to edit, DELETE /api/motors to delete
+# the first way is probably simpler in flask though
 
 if __name__ == '__main__':
     # stuff to run when developing

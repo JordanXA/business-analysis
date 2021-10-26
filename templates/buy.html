@@ -7,10 +7,13 @@
 <div class="container">
     <div class="card-group">
         <div class="row">
+            <!--Doesnt work yet-->
+            {% for motor in motors %}
             <div class="card col-md-4">
                 <img class="card-img-top" src="static/img/placeholder.png" alt="">
                 <div class="card-body">
-                    <h2>Lightning Bike (96v)</h2>
+                    <!--Doesnt work yet-->
+                    <h2>{% motor.name %}</h2>
                     <h3 class="">Bike Info</h3>
                     <form name="lightningBike" method="POST" onsubmit="return false" class="bikeForm">
                         <label for="seatType">Seat Type:
