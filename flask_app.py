@@ -20,8 +20,26 @@ def buy():
     # maybe rename, this is really more like models. It displays the motorcycle models
     # we want to add code here that accesses the list of models from the database
     # we can pass the list of models into render_template() and it will load them
-    motors = LOADFROMDB()
-    return render_template('buy.html', motors)
+    
+    # using this while we don't have a real motorcycle class because flask doesn't care if its a real class
+    class TempClass:
+        def __init__(self, name, price):
+            self.name = name
+            self.price = price
+    
+    motors = []
+    motors.append(TempClass("Lightning", 5123))
+    motors.append(TempClass("Lightning II", 15123))
+
+    wheels = []
+    wheels.append(TempClass("Cool Wheel", 500))
+    wheels.append(TempClass("Dumb Wheel", 1))
+
+    colors = []
+    colors.append(TempClass("Green", 0))
+    colors.append(TempClass("Gold", 9999))
+
+    return render_template('buy.html', motors=motors, wheels=wheels, colors=colors)
 
 @app.route('/about')
 def about():
