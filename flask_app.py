@@ -28,18 +28,24 @@ def buy():
             self.price = price
     
     motors = []
-    motors.append(TempClass("Lightning", 5123))
-    motors.append(TempClass("Lightning II", 15123))
+    motors.append(TempClass("Lightning(96v)", 5123.23))
+    motors.append(TempClass("Sparkle(48v)", 1512.30))
+    motors.append(TempClass("Thunder(192v)", 1314.30))
+    motors.append(TempClass("Firefly(24v)", 5932))
 
     wheels = []
-    wheels.append(TempClass("Cool Wheel", 500))
-    wheels.append(TempClass("Dumb Wheel", 1))
+    wheels.append(TempClass("Standard", 0))
+    wheels.append(TempClass("Premium", 100))
 
     colors = []
-    colors.append(TempClass("Green", 0))
-    colors.append(TempClass("Gold", 9999))
+    colors.append(TempClass("Standard", 0))
+    colors.append(TempClass("Premium", 250))
 
-    return render_template('buy.html', motors=motors, wheels=wheels, colors=colors)
+    seats = []
+    seats.append(TempClass("Standard", 0))
+    seats.append(TempClass("Solo", 0))
+
+    return render_template('buy.html', motors=motors, wheels=wheels, colors=colors, seats=seats)
 
 @app.route('/about')
 def about():

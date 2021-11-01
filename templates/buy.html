@@ -7,32 +7,33 @@
 <div class="container">
     <div class="card-group">
         <div class="row">
-            <!--Doesnt work yet-->
-            {% for motor in motors %}
+            {% for motor in motors%}
             <div class="card col-md-4">
                 <img class="card-img-top" src="static/img/placeholder.png" alt="">
                 <div class="card-body">
-                    <!--Doesnt work yet-->
-                    <h2>{% motor.name %}</h2>
+                    <h2>{{ motor.name }}</h2>
                     <h3 class="">Bike Info</h3>
                     <form name="lightningBike" method="POST" onsubmit="return false" class="bikeForm">
                         <label for="seatType">Seat Type:
                         </label>
-                        <input type="radio" name="seatType" value="standard" checked>Standard
-                        <input type="radio" name="seatType" value="solo">Solo
+                        {% for seat in seats%}
+                        <input type="radio" name="seatType" value="standard" checked>{{seat.name}}
+                        {% endfor %}
                         <br>
                         <label for="wheelType">Wheel Type:
                         </label>
-                        <input type="radio" name="wheelType" value="standard" checked>Standard
-                        <input type="radio" name="wheelType" value="premium">Premium
+                        {% for wheel in wheels%}
+                        <input type="radio" name="wheelType" value="standard" checked>{{wheel.name}}
+                        {% endfor %}
                         <br>
                         <label for="colorType">Color:
                         </label>
-                        <input type="radio" name="colorType" value="standard" checked>Standard
-                        <input type="radio" name="colorType" value="premium">Premium
+                        {% for color in colors%}
+                        <input type="radio" name="colorType" value="standard" checked>{{color.name}}
+                        {% endfor %}
                         <br>
                         <br>
-                        <h5>$8,999</h5>
+                        <h5>{{ "${:,.2f}".format(motor.price) }}</h5>
                         <br>
                         <div class="d-flex">
                             <input type="submit" class="btn btn-success" value="Add to Cart">
@@ -40,102 +41,7 @@
                     </form>
                 </div>
             </div>
-
-            <div class="card col-md-4">
-                <img class="card-img-top" src="static/img/placeholder.png">
-                <div class="card-body">
-                    <h2>Sparkle Bike (48v)</h2>
-                    <h3 class="">Bike Info</h3>
-                    <form name="sparkleBike" method="POST" onsubmit="return false" class="bikeForm">
-                        <label for="seatType">Seat Type:
-                        </label>
-                        <input type="radio" name="seatType" value="standard" checked>Standard
-                        <input type="radio" name="seatType" value="solo">Solo
-                        <br>
-                        <label for="wheelType">Wheel Type:
-                        </label>
-                        <input type="radio" name="wheelType" value="standard" checked>Standard
-                        <input type="radio" name="wheelType" value="premium">Premium
-                        <br>
-                        <label for="colorType">Color:
-                        </label>
-                        <input type="radio" name="colorType" value="standard" checked>Standard
-                        <input type="radio" name="colorType" value="premium">Premium
-                        <br>
-                        <br>
-                        <h5>$5,999</h5>
-                        <br>
-                        <div class="d-flex">
-                            <input type="submit" class="btn btn-success" value="Add to Cart">
-                        </div>
-                    </form>
-                </div>
-            </div>
-            <div class="card col-md-4">
-                <img class="card-img-top" src="static/img/placeholder.png">
-
-                <div class="card-body">
-                    <h2>Thunder Bike (198v)</h2>
-                    <h3 class="">Bike Info</h3>
-                    <form name="thunderBike" method="POST" onsubmit="return false" class="bikeForm">
-                        <label for="seatType">Seat Type:
-                        </label>
-                        <input type="radio" name="seatType" value="standard" checked>Standard
-                        <input type="radio" name="seatType" value="solo">Solo
-                        <br>
-                        <label for="wheelType">Wheel Type:
-                        </label>
-                        <input type="radio" name="wheelType" value="standard" checked>Standard
-                        <input type="radio" name="wheelType" value="premium">Premium
-                        <br>
-                        <label for="colorType">Color:
-                        </label>
-                        <input type="radio" name="colorType" value="standard" checked>Standard
-                        <input type="radio" name="colorType" value="premium">Premium
-                        <br>
-                        <br>
-                        <h5>$10,999</h5>
-                        <br>
-                        <div class="d-flex">
-                            <input type="submit" class="btn btn-success" value="Add to Cart">
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="card col-md-4">
-            <img class="card-img-top" src="static/img/placeholder.png" alt="">
-            <div class="card-body">
-                <h2>Firefly Bike (24v)</h2>
-                <h3 class="">Bike Info</h3>
-                <form name="fireflyBike" method="POST" onsubmit="return false" class="bikeForm">
-                    <label for="seatType">Seat Type:
-                    </label>
-                    <input type="radio" name="seatType" value="standard" checked>Standard
-                    <input type="radio" name="seatType" value="solo">Solo
-                    <br>
-                    <label for="wheelType">Wheel Type:
-                    </label>
-                    <input type="radio" name="wheelType" value="standard" checked>Standard
-                    <input type="radio" name="wheelType" value="premium">Premium
-                    <br>
-                    <label for="colorType">Color:
-                    </label>
-                    <input type="radio" name="colorType" value="standard" checked>Standard
-                    <input type="radio" name="colorType" value="premium">Premium
-                    <br>
-                    <br>
-                    <h5>$3,999</h5>
-                    <br>
-                    <div class="d-flex">
-                        <input type="submit" class="btn btn-success" value="Add to Cart">
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
+            {% endfor %}
 </div>
 <script>
 
