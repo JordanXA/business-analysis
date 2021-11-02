@@ -57,6 +57,10 @@ def faq():
 def login():
     return render_template('login.html')
 
+@app.route('/edit_motors')
+def edit_motors():
+    return render_template('edit_motors.html')
+
 # GET endpoint for a model making page
 # this page will also load the model information, and display a form that you can use to edit models
 # creates a POST request on submit
