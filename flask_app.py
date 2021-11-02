@@ -11,6 +11,33 @@ app = Flask(__name__)
 app.config ['SQLALCHEMY_DATABASE_URI'] = databaseURL
 db = SQLAlchemy(app)
 
+class Models(db.Model):
+    # may need to double check the primary key stuff
+    id = db.Column('modelNum', db.Integer, primary_key = True)
+    modelName = db.Column(db.String(10))
+    # unsure if Numeric is a valid data type
+    modelCost = db.Column(db.Numeric(7,2))
+
+class Colors(db.Model):
+    id = db.Column('colorNum', db.Integer, primary_key = True)
+    colorCombo = db.Column(db.String(30))
+    colorCost = db.Column(db.Numeric(6,2))
+
+class Wheels(db.Model):
+    id = db.Column('wheelNum', db.Integer, primary_key = True)
+    wheelType = db.Column(db.String(10))
+    wheelCost = db.Column(db.Numeric(6,2))
+
+def __init__(self, modelName, modelCost, colorCombo, colorCost, wheelType, wheelCost):
+    self.modelName = modelName
+    self.modelCost = modelCost
+    self.colorCombo = colorCombo
+    self.colorCost = colorCost
+    self.wheelType = wheelType
+    self.wheelCost = wheelCost
+
+#db.create_all()
+
 @app.route('/')
 def index():
     return render_template('index.html')
@@ -20,8 +47,8 @@ def buy():
     # maybe rename, this is really more like models. It displays the motorcycle models
     # we want to add code here that accesses the list of models from the database
     # we can pass the list of models into render_template() and it will load them
-    motors = LOADFROMDB()
-    return render_template('buy.html', motors)
+    #motors = LOADFROMDB()
+    return render_template('buy.html')#, motors)
 
 @app.route('/about')
 def about():
