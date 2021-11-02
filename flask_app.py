@@ -1,6 +1,6 @@
 
 # A very simple Flask Hello World app for you to get started with...
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 from flask_sqlalchemy import SQLAlchemy
 from secrets import dbusername, dbpassword, dburl
 
@@ -18,6 +18,10 @@ class Models(db.Model):
     # unsure if Numeric is a valid data type
     modelCost = db.Column(db.Numeric(7,2))
 
+def __init__(self, modelName, modelCost):
+    self.modelName = modelName
+    self.modelCost = modelCost
+
 class Colors(db.Model):
     id = db.Column('colorNum', db.Integer, primary_key = True)
     colorCombo = db.Column(db.String(30))
@@ -27,14 +31,6 @@ class Wheels(db.Model):
     id = db.Column('wheelNum', db.Integer, primary_key = True)
     wheelType = db.Column(db.String(10))
     wheelCost = db.Column(db.Numeric(6,2))
-
-def __init__(self, modelName, modelCost, colorCombo, colorCost, wheelType, wheelCost):
-    self.modelName = modelName
-    self.modelCost = modelCost
-    self.colorCombo = colorCombo
-    self.colorCost = colorCost
-    self.wheelType = wheelType
-    self.wheelCost = wheelCost
 
 #db.create_all()
 
@@ -65,9 +61,23 @@ def faq():
 def login():
     return render_template('login.html')
 
-@app.route('/edit_motors')
+@app.route('/edit_motors', methods = ['GET', 'POST'])
 def edit_motors():
-    return render_template('edit_motors.html')
+    message = ""
+    if request.method == 'POST':
+        try:
+            formdata = request.form
+            print('formdata', formdata)
+            newmotor = Models(modelName = formdata.get('Model'), modelCost = formdata.get('Price'))
+            print(newmotor)
+            db.session.add(newmotor)
+            db.session.commit()
+            message = "Created Motor."
+        except Exception as err:
+            print(err)
+            message = "Failed to create motor."
+    models = Models.query.all()
+    return render_template('edit_motors.html', motors = models, message = message)
 
 # GET endpoint for a model making page
 # this page will also load the model information, and display a form that you can use to edit models

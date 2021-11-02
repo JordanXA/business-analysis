@@ -1,18 +1,21 @@
 {% extends "base.html" %}
-{% block title %}About{% endblock %}
+{% block title %}Edit Motorcycles{% endblock %}
 {% block content %}
 
 <div class="container-fluid">
     <div class="row">
         <div class="col-12 col-md-6">
+            {% if message != "" %}
+            <h1>{{message}}</h1>
+            {% endif %}
             <h1>Create Model</h1>
             <!-- a form that lets you create a new model. We can make it let you edit models later -->
-            <form name="myForm" action="/action_page.php" onsubmit="return validateForm()" method="post">
+            <form name="new_motorcycle" action="/edit_motors" method="post">
                 <label for="Motor Type">Motor Type:</label><br />
                 <input type="text" name="Model"><br>
                 <label for="price">Price:</label><br />
                 <input type="text" name="Price"><br /><br />
-                <input type="submit" class="btn btn-success" value="ADD">
+                <input type="submit" class="btn btn-success">
             </form>
         </div>
         <br>
@@ -21,7 +24,7 @@
             <!-- Also, make a dropdown to let you select a model and delete it here -->
             <select name="motorcycles" id="motorcycle">
                 {% for motor in motors %}
-                <option value="{{motor.name}}">{{motor.name}}</option>
+                <option value="{{motor.name}}">{{motor.modelName}}</option>
                 {% endfor %}
             </select>
         </div>
