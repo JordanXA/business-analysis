@@ -44,11 +44,10 @@ def index():
 
 @app.route('/buy')
 def buy():
-    # maybe rename, this is really more like models. It displays the motorcycle models
-    # we want to add code here that accesses the list of models from the database
-    # we can pass the list of models into render_template() and it will load them
-    #motors = LOADFROMDB()
-    return render_template('buy.html')#, motors)
+    models = Models.query.all()
+    wheels = Wheels.query.all()
+    colors = Colors.query.all()
+    return render_template('buy.html', motors = models, wheels = wheels, colors = colors)
 
 @app.route('/about')
 def about():

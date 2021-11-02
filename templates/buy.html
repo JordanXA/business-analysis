@@ -11,29 +11,27 @@
             <div class="card col-md-4">
                 <img class="card-img-top" src="static/img/placeholder.png" alt="">
                 <div class="card-body">
-                    <h2>{{ motor.name }}</h2>
+                    <h2>{{ motor.modelName }}</h2>
                     <h3 class="">Bike Info</h3>
-                    <form name="lightningBike" method="POST" onsubmit="return false" class="bikeForm">
+                    <form name="{{motor.modelName}}" method="POST" onsubmit="return false" class="bikeForm">
                         <label for="seatType">Seat Type:
                         </label>
-                        {% for seat in seats%}
-                        <input type="radio" name="seatType" value="standard" checked>{{seat.name}}
-                        {% endfor %}
+                        <input type="radio" name="seatType" value="standard" checked>Seat
                         <br>
                         <label for="wheelType">Wheel Type:
                         </label>
                         {% for wheel in wheels%}
-                        <input type="radio" name="wheelType" value="standard" checked>{{wheel.name}}
+                        <input type="radio" name="wheelType" value="{{wheel.wheelType}}" checked>{{wheel.wheelType}}
                         {% endfor %}
                         <br>
                         <label for="colorType">Color:
                         </label>
                         {% for color in colors%}
-                        <input type="radio" name="colorType" value="standard" checked>{{color.name}}
+                        <input type="radio" name="colorType" value="{{color.colorCombo}}" checked>{{color.colorCombo}}
                         {% endfor %}
                         <br>
                         <br>
-                        <h5>{{ "${:,.2f}".format(motor.price) }}</h5>
+                        <h5>{{ "${:,.2f}".format(motor.modelCost) }}</h5>
                         <br>
                         <div class="d-flex">
                             <input type="submit" class="btn btn-success" value="Add to Cart">
@@ -45,15 +43,19 @@
 </div>
 <script>
 
-    let basePrices = new Map();
-    basePrices.set('lightningBike', 8999);
-    basePrices.set('sparkleBike', 5999);
-    basePrices.set('thunderBike', 10999);
-    basePrices.set('fireflyBike', 3999);
-
-    const seatCost = 0;
-    const wheelCost = 100;
-    const colorCost = 250;
+    let bikePrices = new Map();
+    {% for motor in motors %}
+    bikePrices.set('{{motor.modelName}}', {{motor.modelCost}});
+    {% endfor %}
+    let colorPrices = new Map();
+    {% for color in colors %}
+    colorPrices.set('{{color.colorCombo}}', {{color.colorCost}});
+    {% endfor %}
+    let wheelPrices = new Map();
+    {% for wheel in wheels %}
+    wheelPrices.set('{{wheel.wheelType}}', {{wheel.wheelCost}});
+    {% endfor %}
+    
 
     $('.bikeForm').on("change", (event) => {
         let bikeForm = event.target.parentElement;
@@ -61,9 +63,10 @@
         let seatType = bikeForm.querySelector('input[name="seatType"]:checked').value;
         let wheelType = bikeForm.querySelector('input[name="wheelType"]:checked').value;
         let colorType = bikeForm.querySelector('input[name="colorType"]:checked').value;
-        let price = basePrices.get(bikeName)
-            + (wheelType == 'premium' ? wheelCost : 0)
-            + (colorType == 'premium' ? colorCost : 0);
+        let bikePrice = bikePrices.get(bikeName);
+        let wheelPrice = wheelPrices.get(wheelType);
+        let colorPrice = colorPrices.get(colorType);
+        let price = bikePrice + wheelPrice + colorPrice;
         bikeForm.querySelector('h5').innerText = '$'+(price.toLocaleString());
         console.log(seatType, wheelType, colorType);
     });
